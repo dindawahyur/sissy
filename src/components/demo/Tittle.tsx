@@ -1,5 +1,3 @@
-import { irfan, is2 } from "@/assets";
-
 export function Tittle() {
   return (
     <section id="title" className="py-12 font-primary">

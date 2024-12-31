@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navbar } from "@/components/demo/Navbar";
+// import { Navbar } from "@/components/demo/Navbar";
 import { Carousel } from "@/components/demo/Carousel";
 import { EventDetails } from "@/components/demo/EventDetails";
 import { CommentSection } from "@/components/demo/CommentSection";
