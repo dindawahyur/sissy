@@ -84,3 +84,7 @@
 .modal {
   outline: none;
 }
+
+.font-rouge {
+  font-family: "Rouge Script", cursive;
+}

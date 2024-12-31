@@ -36,24 +36,7 @@ export function Carousel() {
           />
         </motion.div>
       ))}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center z-10">
-        <motion.h2
-          className="text-4xl md:text-6xl font-bold mb-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          Menuju Hari Bahagia
-        </motion.h2>
-        <motion.p
-          className="text-xl md:text-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          12 Februari 2025
-        </motion.p>
-      </div>
+
       <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
         {images.map((_, index) => (
           <button
