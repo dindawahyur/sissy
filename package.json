@@ -15,6 +15,7 @@
     "@dicebear/avatars-initials-sprites": "^4.10.8",
     "@dicebear/collection": "^9.2.2",
     "@dicebear/core": "^9.2.2",
+    "@fontsource/rouge-script": "^5.1.1",
     "@headlessui/react": "^2.1.8",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-avatar": "^1.1.0",
