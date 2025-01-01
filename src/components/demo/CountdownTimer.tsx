@@ -57,14 +57,14 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
 
   return (
     <section className="">
-      <h2 className="text-4xl font-bold text-center mb-2">
+      <h2 className="text-4xl font-bold text-center mb-5 font-rouge text-primary">
         Menuju Hari Bahagia
       </h2>
       <div className="grid grid-cols-4 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
         {timerComponents}
       </div>
 
-      <div className="grid mx-12 pt-12">
+      <div className="grid mx-6 pt-12">
         <p className="text-center">
           “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
           pasangan-pasangan dari jenismu sendiri, supaya kamu cenderung dan

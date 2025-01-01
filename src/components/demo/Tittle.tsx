@@ -1,47 +1,146 @@
+import { bismillah, satu, dua } from "@/assets";
+import { motion } from "framer-motion";
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
+
+const zoomIn = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } },
+};
+
 export function Tittle() {
   return (
     <section id="title" className="py-12 font-primary">
-      <h2 className="text-4xl font-bold text-center mb-2">Our Story</h2>
       <div className="flex justify-center mb-8">
-        {/* You can add your decorative element here if needed */}
-      </div>
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-        <div className="p-4">
-          <div className="flex justify-center">
-            <img
-              src="assets/img/bunga.png"
-              alt="Bunga dekorasi"
-              className="my-3"
+        <section className="container mx-auto py-5 px-5 bg-white" id="skills">
+          <div className="flex flex-col text-center items-center">
+            <motion.img
+              src={bismillah}
+              alt="Bismillah"
+              className="w-2/5"
+              variants={zoomIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             />
+
+            <motion.p
+              className="mt-5 text-md"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              Assalamu'alaikum
+              <br />
+              Warahmatullaahi Wabarakaatuh
+            </motion.p>
+            <motion.p
+              className="mt-3 mb-5 text-xs"
+              variants={zoomIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              Maha Suci Allah yang telah menciptakan makhluk-Nya
+              berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi
+              pernikahan kami.
+            </motion.p>
+
+            <div className="relative w-64 h-64">
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <motion.img
+                  src={satu}
+                  alt="Lintang"
+                  className="w-full h-full object-cover"
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                />
+              </div>
+            </div>
+            <motion.h3
+              className="font-serif text-navy font-bold text-3xl font-rouge text-primary mt-3"
+              variants={zoomIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              Lintang
+            </motion.h3>
+            <motion.h5
+              className="text-lg mt-1"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              Lintang Pandu Kusuma, S.Pd
+            </motion.h5>
+            <motion.p
+              className="text-sm"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              Putri bapak Wawan Rajiko & Ibu Endang Purwaningsih
+            </motion.p>
+
+            <motion.h1
+              className="font-serif text-4xl my-5 text-primary"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              &
+            </motion.h1>
+
+            <div className="relative w-64 h-64">
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <motion.img
+                  src={satu}
+                  alt="Lintang"
+                  className="w-full h-full object-cover"
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                />
+              </div>
+            </div>
+            <motion.h3
+              className="font-serif text-navy font-bold text-3xl font-rouge text-primary mt-3"
+              variants={zoomIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              Rifqi
+            </motion.h3>
+            <motion.h5
+              className="text-lg mt-1"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              Rifqi Ardianzah
+            </motion.h5>
+            <motion.p
+              className="text-sm"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              Putra Bapak Kasirin Wahyu S dan Ibu Catur Feryani
+            </motion.p>
           </div>
-          <h2 className="text-2xl font-unik py-3 mb-0">Menuju Hari Bahagia</h2>
-          <div id="countdown" data-aos="fade-up">
-            <ul className="flex justify-between text-center px-0">
-              <li className="flex-1 mr-1">
-                <span id="days"></span>Hari
-              </li>
-              <li className="flex-1 mr-1">
-                <span id="hours"></span>Jam
-              </li>
-              <li className="flex-1 mr-1">
-                <span id="minutes"></span>Menit
-              </li>
-              <li className="flex-1">
-                <span id="seconds"></span>Detik
-              </li>
-            </ul>
-          </div>
-          <p className="text-center" data-aos="fade-up">
-            “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
-            untukmu pasangan-pasangan dari jenismu sendiri, supaya kamu
-            cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya
-            diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian
-            itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir.”
-            <br />
-            <br />
-            (QR Ar-Rum : 21)
-          </p>
-        </div>
+        </section>
       </div>
     </section>
   );

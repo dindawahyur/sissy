@@ -1,34 +1,31 @@
-import irfan from "@/assets/img/irfan2.webp";
-import is from "@/assets/img/is.webp";
-import is2 from "@/assets/img/is2.webp";
 import satu from "@/assets/img/1.jpg";
 import dua from "@/assets/img/2.jpg";
 import tiga from "@/assets/img/3.jpg";
-import empat from "@/assets/img/4.webp";
-import lima from "@/assets/img/5.webp";
-import enam from "@/assets/img/6.webp";
-import tujuh from "@/assets/img/7.webp";
-import delapan from "@/assets/img/8.webp";
-import sembilan from "@/assets/img/9.jpg";
-import spuluh from "@/assets/img/10.webp";
+import empat from "@/assets/img/4.jpg";
+import lima from "@/assets/img/5.jpg";
+import a_satu from "@/assets/img/a1.jpg";
+import a_dua from "@/assets/img/a2.jpg";
+import a_tiga from "@/assets/img/a3.jpg";
+import a_empat from "@/assets/img/a4.jpg";
+import a_lima from "@/assets/img/a5.jpg";
 
 import hello_video from "@/assets/video/hello.mp4";
 import hello_image from "@/assets/img/hello-img.jpg";
 
+import bismillah from "@/assets/img/bismillah.png";
+
 export {
-  irfan,
-  is,
-  is2,
   satu,
   dua,
   tiga,
   empat,
   lima,
-  enam,
-  tujuh,
-  delapan,
-  sembilan,
-  spuluh,
+  a_satu,
+  a_dua,
+  a_tiga,
+  a_empat,
+  a_lima,
   hello_video,
   hello_image,
+  bismillah,
 };

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { hello_image, hello_video } from "@/assets";
 import { Loading } from "@/components/demo/Loading";
+import { motion } from "framer-motion";
 
 const Hello = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
@@ -27,6 +28,25 @@ const Hello = () => {
     return <Loading />;
   }
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.2,
+        duration: 0.8,
+        when: "beforeChildren",
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
   return (
     <section className="w-screen h-screen relative">
       {isVideoPlaying ? (
@@ -50,13 +70,25 @@ const Hello = () => {
               backgroundImage: `url(${hello_image})`,
             }}
           />
-          <div className="absolute inset-0 flex items-center justify-center flex-col ">
-            <h3 className="text-white">Pernikahan</h3>
-            <h1 className="text-white text-3xl md:text-4xl font-bold text-center font-rouge">
-              Lintang & Rifqi
-            </h1>
-            <h3 className="text-white">12 Februari 2025</h3>
-          </div>
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center flex-col"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.h3 className="text-white" variants={childVariants}>
+              Pernikahan
+            </motion.h3>
+            <motion.h1
+              className="text-6xl font-bold text-center font-rouge text-white my-10"
+              variants={childVariants}
+            >
+              Lintang <br />&<br /> Rifqi
+            </motion.h1>
+            <motion.h3 className="text-white" variants={childVariants}>
+              12 Februari 2025
+            </motion.h3>
+          </motion.div>
         </>
       )}
     </section>

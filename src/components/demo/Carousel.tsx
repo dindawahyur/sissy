@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { satu, dua, sembilan } from "@/assets";
+import { satu, dua, a_satu } from "@/assets";
 
-const images = [satu, dua, sembilan];
+const images = [satu, dua, a_satu];
 
 export function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
