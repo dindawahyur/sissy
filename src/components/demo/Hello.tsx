@@ -77,7 +77,7 @@ const Hello = () => {
             animate="visible"
           >
             <motion.h3 className="text-white" variants={childVariants}>
-              Pernikahan
+              The Wedding of
             </motion.h3>
             <motion.h1
               className="text-6xl font-bold text-center font-rouge text-white my-10"

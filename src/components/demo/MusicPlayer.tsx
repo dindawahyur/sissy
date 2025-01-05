@@ -37,16 +37,12 @@ export function MusicPlayer() {
       audioRef.current.muted = isMuted;
     }
   }, [isMuted]);
-
   const handleFirstInteraction = () => {
     setUserInteracted(true); // Tandai interaksi pertama pengguna
     setIsPlaying(true); // Mulai putar musik
   };
-
   const togglePlay = () => setIsPlaying(!isPlaying);
-
   const toggleMute = () => setIsMuted(!isMuted);
-
   return (
     <div className="fixed bottom-2 right-2 p-3 rounded-lg flex items-center space-x-4">
       {/* Audio element */}
@@ -54,7 +50,6 @@ export function MusicPlayer() {
         <source src={audio} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-
       {/* Informasi lagu */}
       {showInfo && (
         <motion.div
@@ -67,7 +62,6 @@ export function MusicPlayer() {
           <p className="text-xs text-gray-600">Tiara Andini, Arsy Widianto</p>
         </motion.div>
       )}
-
       {/* Controls */}
       <div className="flex space-x-2">
         {/* Play Button for first interaction */}
@@ -80,7 +74,6 @@ export function MusicPlayer() {
             <Play className="h-4 w-4" />
           </Button>
         )}
-
         {/* Play/Pause Button */}
         {userInteracted && (
           <Button onClick={togglePlay} variant="outline" size="icon">
@@ -91,7 +84,6 @@ export function MusicPlayer() {
             )}
           </Button>
         )}
-
         {/* Mute/Unmute Button */}
         <Button onClick={toggleMute} variant="outline" size="icon">
           {isMuted ? (

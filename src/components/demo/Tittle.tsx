@@ -1,4 +1,4 @@
-import { bismillah, satu, dua } from "@/assets";
+import { bismillah, lintang, rifqi, blue_vintage, bg_bunga } from "@/assets";
 import { motion } from "framer-motion";
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -12,9 +12,18 @@ const zoomIn = {
 
 export function Tittle() {
   return (
-    <section id="title" className="py-12 font-primary">
-      <div className="flex justify-center mb-8">
-        <section className="container mx-auto py-5 px-5 bg-white" id="skills">
+    <section id="title" className="my-12 font-primary min-h-screen">
+      <div
+        className="flex justify-center mb-8 flex-col"
+        style={{
+          backgroundImage: `url(${blue_vintage})`,
+          backgroundRepeat: "repeat-y",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center top",
+          margin: "0 -24px",
+        }}
+      >
+        <section className="container mx-auto py-5 px-5 mx-5" id="skills">
           <div className="flex flex-col text-center items-center">
             <motion.img
               src={bismillah}
@@ -52,7 +61,7 @@ export function Tittle() {
             <div className="relative w-64 h-64">
               <div className="w-full h-full rounded-full overflow-hidden">
                 <motion.img
-                  src={satu}
+                  src={lintang}
                   alt="Lintang"
                   className="w-full h-full object-cover"
                   variants={fadeUp}
@@ -102,8 +111,8 @@ export function Tittle() {
             <div className="relative w-64 h-64">
               <div className="w-full h-full rounded-full overflow-hidden">
                 <motion.img
-                  src={satu}
-                  alt="Lintang"
+                  src={rifqi}
+                  alt="Rifqi"
                   className="w-full h-full object-cover"
                   variants={fadeUp}
                   initial="hidden"
@@ -137,10 +146,22 @@ export function Tittle() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              Putra Bapak Kasirin Wahyu S dan Ibu Catur Feryani
+              Putra Bapak Kasirin Wahyu S & Ibu Catur Feryani
             </motion.p>
           </div>
         </section>
+        <div
+          style={{
+            margin: "0 -24px",
+            paddingBottom: "35%",
+            backgroundImage: `url(${bg_bunga})`,
+            backgroundSize: "cover",
+            backgroundPosition: "top center",
+            backgroundRepeat: "no-repeat",
+            width: `calc(100vw + 30px)`,
+            height: "auto",
+          }}
+        />
       </div>
     </section>
   );

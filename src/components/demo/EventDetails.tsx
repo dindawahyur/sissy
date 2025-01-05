@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   MapPinIcon,
   ClockIcon,
@@ -9,13 +8,14 @@ import {
   MusicIcon,
 } from "lucide-react";
 import { LocationMap } from "@/components/demo/LocationMap"; // Import komponen peta
+import { bg_abu } from "@/assets";
 
 export function EventDetails() {
   const events = [
     {
       id: "ceremony",
       title: "Akad Nikah",
-      date: "Rabu, 12 Februari 2024",
+      date: "Rabu, 12 Februari 2025",
       time: "08.00 WIB",
       venue: "Kediaman mempelai wanita",
       address: "Jawa Tengah, Indonesia🆔",
@@ -26,7 +26,7 @@ export function EventDetails() {
     {
       id: "reception",
       title: "Resepsi",
-      date: "Rabu, 12 Februari 2024",
+      date: "Rabu, 12 Februari 2025",
       time: "09.00 WIB - selesai",
       venue: "Kediaman mempelai wanita",
       address: "Jawa Tengah, Indonesia🆔",
@@ -43,7 +43,7 @@ export function EventDetails() {
       style={{ backgroundImage: "url(../../../src/assets/img/bgweding.jpeg')" }}
     >
       <motion.h2
-        className="text-4xl font-bold text-center mb-8 text-primary"
+        className="text-4xl font-bold text-center mb-8 text-primary font-rouge"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -51,8 +51,9 @@ export function EventDetails() {
         Event Details
       </motion.h2>
 
-      <p className="text-lg text-muted-foreground mb-10 text-center">
-        We can't wait to celebrate with you!
+      <p className="text-sm text-muted-foreground mb-10 text-center">
+        Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, kami
+        mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara pernikahan kami.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
         {events.map((event, index) => (
@@ -64,13 +65,20 @@ export function EventDetails() {
             className="cursor-pointer"
           >
             <Card className="overflow-hidden border-2 border-primary/20 hover:border-primary/50 transition-all duration-300">
-              <CardHeader className="bg-primary/10">
-                <CardTitle className="flex items-center gap-2 text-2xl text-primary">
-                  {event.icon}
+              <CardHeader className="bg-primary">
+                <CardTitle className="flex items-center gap-2 text-2xl text-white ">
+                  {/* {event.icon} */}
                   {event.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-4">
+              <CardContent
+                className="pt-4"
+                // style={{
+                //   backgroundImage: `url(${bg_abu})`,
+                //   backgroundSize: "cover",
+                //   backgroundPosition: "center",
+                // }}
+              >
                 <div className="flex items-center gap-2 mb-2">
                   <CalendarIcon className="w-5 h-5 text-muted-foreground" />
                   <p>{event.date}</p>

@@ -1,9 +1,26 @@
-import { dua } from "@/assets";
+import { dua, bg_abu } from "@/assets";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
+import { FaHeart } from "react-icons/fa";
 
 export function About() {
   return (
-    <section id="about" className="py-12 font-primary">
-      <h2 className="text-4xl font-bold text-center mb-2">Kisah Kami</h2>
+    <section
+      id="about"
+      className="py-12 font-primary"
+      style={{
+        backgroundImage: `url(${bg_abu})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        margin: "0 -24px",
+      }}
+    >
+      <h2 className="text-4xl font-bold text-center mb-2 font-rouge text-primary">
+        Kisah Kami
+      </h2>
       <div className="flex justify-center mb-8">
         {/* You can add your decorative element here if needed */}
       </div>
@@ -33,13 +50,83 @@ export function About() {
           </div>
         </div>
         <div className="text-center font-tertiary">
-          <p className="mb-4">
-            Kisah kami dimulai sejak masa SMP pada tahun 2016, saat sering
-            bertemu di kantin sekolah dan menjalin persahabatan yang erat pada
-            Agustus 2016. Meski sempat berpisah pada tahun 2020, takdir
-            mempertemukan kami kembali hingga bertunangan pada Mei 2022, dan
-            akhirnya melangkah ke jenjang pernikahan.
-          </p>
+          <VerticalTimeline lineColor="#3a4664">
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: "#3a4664", color: "#fff" }}
+              icon={<FaHeart />}
+              contentStyle={{
+                padding: "0 5px",
+                background: "#3a4664",
+                color: "white",
+              }}
+              contentArrowStyle={{ borderRight: "7px solid #3a4664" }}
+            >
+              <h3 className="vertical-timeline-element-title font-rouge text-3xl text-white pt-2">
+                2016
+              </h3>
+              <p style={{ fontWeight: "300" }}>
+                Pertemuan tak terduga di kantin sekolah menjadi awal kisah cinta
+                kita.
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: "#3a4664", color: "#fff" }}
+              icon={<FaHeart />}
+              contentStyle={{
+                padding: "0 5px",
+                background: "#3a4664",
+                color: "white",
+              }}
+              contentArrowStyle={{ borderRight: "7px solid #3a4664" }}
+            >
+              <h3 className="vertical-timeline-element-title font-rouge text-3xl text-white pt-2">
+                2020
+              </h3>
+              <p style={{ fontWeight: "300" }}>
+                Menjadi bab terpisah dalam kisah cinta kami, namun akhirnya kita
+                bertemu kembali.
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: "#3a4664", color: "#fff" }}
+              icon={<FaHeart />}
+              contentStyle={{
+                padding: "0 5px",
+                background: "#3a4664",
+                color: "white",
+              }}
+              contentArrowStyle={{ borderRight: "7px solid #3a4664" }}
+            >
+              <h3 className="vertical-timeline-element-title font-rouge text-3xl text-white pt-2">
+                2022
+              </h3>
+              <p style={{ fontWeight: "300" }}>
+                Takdir mempertemukan kembali, dan kami memutuskan untuk
+                bertunangan.
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: "#3a4664", color: "#fff" }}
+              icon={<FaHeart />}
+              contentStyle={{
+                padding: "0 5px",
+                background: "#3a4664",
+                color: "white",
+              }}
+              contentArrowStyle={{ borderRight: "7px solid #3a4664" }}
+            >
+              <h3 className="vertical-timeline-element-title font-rouge text-3xl text-white pt-2">
+                12 Februari 2025
+              </h3>
+              <p style={{ fontWeight: "300" }}>
+                Kami akan memulai babak baru kehidupan bersama.
+              </p>
+            </VerticalTimelineElement>
+          </VerticalTimeline>
         </div>
       </div>
     </section>
