@@ -5,32 +5,8 @@ import { Check, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FaGift } from "react-icons/fa";
 
-interface BankAccount {
-  bank: string;
-  number: string;
-  logo: string;
-}
-
 export function BankAccounts() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-
-  const accounts: BankAccount[] = [
-    {
-      bank: "BNI",
-      number: "1060372313",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/6/6d/BNI_%28Bureau_of_National_Investigations%29_Logo.png",
-    },
-    {
-      bank: "Kirim Gift",
-      number: "RT 02/Rw 01 Desa Adiwarno, Buayan, Kebumen",
-      logo: "<FaGift />",
-    },
-    {
-      bank: "MANDIRI",
-      number: "1122334455",
-      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC5i2DTq_zcdUSaJtpoAu3Pb4hxxtNUkPyMQ&s",
-    },
-  ];
 
   const copyToClipboard = (text: string, index: number) => {
     navigator.clipboard.writeText(text).then(() => {

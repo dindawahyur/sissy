@@ -1,4 +1,11 @@
-import { bismillah, lintang, rifqi, blue_vintage, bg_bunga } from "@/assets";
+import {
+  bismillah,
+  lintang,
+  rifqi,
+  blue_vintage,
+  bg_bunga,
+  bg_abu,
+} from "@/assets";
 import { motion } from "framer-motion";
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -12,7 +19,15 @@ const zoomIn = {
 
 export function Tittle() {
   return (
-    <section id="title" className="my-12 font-primary min-h-screen">
+    <section
+      id="title"
+      className="my-12 font-primary min-h-screen"
+      style={{
+        backgroundImage: `url(${bg_abu})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div
         className="flex justify-center mb-8 flex-col"
         style={{
@@ -20,7 +35,6 @@ export function Tittle() {
           backgroundRepeat: "repeat-y",
           backgroundSize: "100% auto",
           backgroundPosition: "center top",
-          margin: "0 -24px",
         }}
       >
         <section className="container mx-auto py-5 px-5 mx-5" id="skills">

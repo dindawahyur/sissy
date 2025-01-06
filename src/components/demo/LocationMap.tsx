@@ -12,10 +12,6 @@ export function LocationMap({ mapSrc }: LocationMapProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  const secureMapSrc = mapSrc.startsWith("https://")
-    ? mapSrc
-    : `https://www.google.com/maps/embed?${mapSrc}`;
-
   return (
     <div className="relative group">
       {!loaded && (
@@ -29,9 +25,7 @@ export function LocationMap({ mapSrc }: LocationMapProps) {
         }`}
       >
         <iframe
-          src={
-            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632.0532197694204!2d109.477274!3d-7.730955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwNDMnNTEuNCJTIDEwOcKwMjgnMzguMiJF!5e0!3m2!1sen!2sid!4v1700000000000"
-          }
+          src={mapSrc}
           width="600"
           height="450"
           style={{ border: 0 }}

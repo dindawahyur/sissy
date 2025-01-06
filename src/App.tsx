@@ -33,18 +33,20 @@ export default function App() {
       </header> */}
 
       <Hello />
-      <main className="z-50 container mx-auto px-6 space-y-12 mt-10">
+      <div className="z-50 container mx-auto px-6 space-y-12 mt-10">
         <Carousel />
         <CountdownTimer targetDate={new Date("2025-02-12T00:00:00")} />
-        <Tittle />
-        <EventDetails />
-        <About />
+        {/* <VideoSection /> */}
+      </div>
+      <Tittle />
+      <EventDetails />
+      <About />
+      <div className="z-50 container mx-auto px-6 space-y-12 mt-10">
         <PhotoGallery />
         <CommentSection />
-
         <BankAccounts />
-        {/* <VideoSection /> */}
-      </main>
+      </div>
+
       <Footer />
       <MusicPlayer />
     </div>

@@ -1,4 +1,4 @@
-import { dua, bg_abu } from "@/assets";
+import { bg_full, dua } from "@/assets";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -12,18 +12,15 @@ export function About() {
       id="about"
       className="py-12 font-primary"
       style={{
-        backgroundImage: `url(${bg_abu})`,
+        backgroundImage: `url(${bg_full})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        margin: "0 -24px",
       }}
     >
       <h2 className="text-4xl font-bold text-center mb-2 font-rouge text-primary">
         Kisah Kami
       </h2>
-      <div className="flex justify-center mb-8">
-        {/* You can add your decorative element here if needed */}
-      </div>
+
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
         <div className="flex flex-col items-center">
           <div className="relative w-64 h-64">

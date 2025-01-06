@@ -8,7 +8,6 @@ import {
   MusicIcon,
 } from "lucide-react";
 import { LocationMap } from "@/components/demo/LocationMap"; // Import komponen peta
-import { bg_abu } from "@/assets";
 
 export function EventDetails() {
   const events = [
@@ -21,7 +20,8 @@ export function EventDetails() {
       address: "Jawa Tengah, Indonesia🆔",
       details: "Rt 02/Rw 01, desa Adiwarno, Kecamatan Buayan, Kebumen",
       icon: <GlassesIcon className="w-6 h-6 text-primary" />,
-      mapSrc: "https://maps.app.goo.gl/TwJGgQsdJ5rKvufG9",
+      mapSrc:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632.0532197694204!2d109.477274!3d-7.730955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwNDMnNTEuNCJTIDEwOcKwMjgnMzguMiJF!5e0!3m2!1sen!2sid!4v1700000000000",
     },
     {
       id: "reception",
@@ -32,7 +32,8 @@ export function EventDetails() {
       address: "Jawa Tengah, Indonesia🆔",
       details: "Rt 02/Rw 01, desa Adiwarno, Kecamatan Buayan, Kebumen",
       icon: <MusicIcon className="w-6 h-6 text-primary" />,
-      mapSrc: "https://maps.app.goo.gl/vSm6qZ6uEpxTBmSU8",
+      mapSrc:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632.0532197694204!2d109.477274!3d-7.730955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwNDMnNTEuNCJTIDEwOcKwMjgnMzguMiJF!5e0!3m2!1sen!2sid!4v1700000000000",
     },
   ];
 

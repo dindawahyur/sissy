@@ -15,6 +15,7 @@ import rifqi from "@/assets/img/rifqi.png";
 
 import hello_video from "@/assets/video/hello.mp4";
 import hello_image from "@/assets/img/hello-img.jpg";
+import bg_full from "@/assets/img/bg-full.jpg";
 
 import bismillah from "@/assets/img/bismillah.png";
 import blue_vintage from "@/assets/img/blue_vintage.webp";
@@ -42,4 +43,5 @@ export {
   blue_vintage,
   bg_bunga,
   bg_abu,
+  bg_full,
 };
