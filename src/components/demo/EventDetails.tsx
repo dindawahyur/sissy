@@ -8,6 +8,7 @@ import {
   MusicIcon,
 } from "lucide-react";
 import { LocationMap } from "@/components/demo/LocationMap"; // Import komponen peta
+import { bg_abu } from "@/assets";
 
 export function EventDetails() {
   const events = [
@@ -20,8 +21,6 @@ export function EventDetails() {
       address: "Jawa Tengah, Indonesia🆔",
       details: "Rt 02/Rw 01, desa Adiwarno, Kecamatan Buayan, Kebumen",
       icon: <GlassesIcon className="w-6 h-6 text-primary" />,
-      mapSrc:
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632.0532197694204!2d109.477274!3d-7.730955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwNDMnNTEuNCJTIDEwOcKwMjgnMzguMiJF!5e0!3m2!1sen!2sid!4v1700000000000",
     },
     {
       id: "reception",
@@ -40,8 +39,12 @@ export function EventDetails() {
   return (
     <section
       id="event-details"
-      className="py-12 px-4 max-w-7xl mx-auto  "
-      style={{ backgroundImage: "url(../../../src/assets/img/bgweding.jpeg')" }}
+      className="py-12 px-10 max-w-7xl mx-auto  "
+      style={{
+        backgroundImage: `url(${bg_abu})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
       <motion.h2
         className="text-4xl font-bold text-center mb-8 text-primary font-rouge"
@@ -92,15 +95,15 @@ export function EventDetails() {
                   <MapPinIcon className="w-5 h-5 text-muted-foreground" />
                   <p>{event.venue}</p>
                 </div>
-
                 <p className="mt-2 text-sm text-muted-foreground">
                   {event.address}
                 </p>
                 <p className="mt-2 italic">{event.details}</p>
-
-                <div className="mt-4">
-                  <LocationMap mapSrc={event.mapSrc} />
-                </div>
+                {event.mapSrc && (
+                  <div className="mt-4">
+                    <LocationMap mapSrc={event.mapSrc} />
+                  </div>
+                )}
               </CardContent>
             </Card>
           </motion.div>

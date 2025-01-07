@@ -1,14 +1,25 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+import { satu, dua, a_satu, bg_abu } from "@/assets";
+
+const images = [satu, dua, a_satu];
 
 interface CountdownTimerProps {
-  targetDate: Date;
+  readonly targetDate: Date;
 }
 
 export function CountdownTimer({ targetDate }: CountdownTimerProps) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2500);
+
+    return () => clearInterval(timer);
+  }, []);
   function calculateTimeLeft() {
     const difference = +targetDate - +new Date();
     let timeLeft = {
@@ -56,8 +67,51 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
   ));
 
   return (
-    <section className="">
-      <h2 className="text-4xl font-bold text-center mb-5 font-rouge text-primary">
+    <section
+      className="py-10 px-6"
+      style={{
+        backgroundImage: `url(${bg_abu})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg">
+        {images.map((image, index) => (
+          <motion.div
+            key={index}
+            className="absolute w-full h-full"
+            initial={{ scale: 1.2, opacity: index === 0 ? 1 : 0 }}
+            animate={{
+              scale: index === currentIndex ? 1 : 1.2,
+              opacity: index === currentIndex ? 1 : 0,
+            }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+            <img
+              src={image}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        ))}
+
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                index === currentIndex
+                  ? "bg-white"
+                  : "bg-gray-400 hover:bg-gray-300"
+              }`}
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+      <h2 className="text-4xl font-bold text-center my-5 font-rouge text-primary">
         Menuju Hari Bahagia
       </h2>
       <div className="grid grid-cols-4 md:grid-cols-4 gap-4 max-w-4xl mx-auto">

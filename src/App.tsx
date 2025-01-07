@@ -1,6 +1,5 @@
 //import { useState, useEffect } from "react";
 // import { Navbar } from "@/components/demo/Navbar";
-import { Carousel } from "@/components/demo/Carousel";
 import { EventDetails } from "@/components/demo/EventDetails";
 import { CommentSection } from "@/components/demo/CommentSection";
 
@@ -33,21 +32,14 @@ export default function App() {
       </header> */}
 
       <Hello />
-      <div className="z-50 container mx-auto px-6 space-y-12 mt-10">
-        <Carousel />
-        <CountdownTimer targetDate={new Date("2025-02-12T00:00:00")} />
-        {/* <VideoSection /> */}
-      </div>
+
+      <CountdownTimer targetDate={new Date("2025-02-12T00:00:00")} />
       <Tittle />
-      <div className="z-50 container mx-auto px-6 space-y-12 mt-10">
-        <EventDetails />
-      </div>
+      <EventDetails />
       <About />
-      <div className="z-50 container mx-auto px-6 space-y-12 mt-10">
-        <PhotoGallery />
-        <CommentSection />
-        <BankAccounts />
-      </div>
+      <PhotoGallery />
+      <CommentSection />
+      <BankAccounts />
 
       <Footer />
       <MusicPlayer />

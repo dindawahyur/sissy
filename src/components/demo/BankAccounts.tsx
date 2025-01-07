@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FaGift } from "react-icons/fa";
+import { bg_abu } from "@/assets";
 
 export function BankAccounts() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -16,7 +17,14 @@ export function BankAccounts() {
   };
 
   return (
-    <section className="pb-20">
+    <section
+      className="pb-20 py-10 px-6"
+      style={{
+        backgroundImage: `url(${bg_abu})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <h2 className="text-3xl font-bold text-center mb-6 text-primary font-rouge">
         Hadiah
       </h2>

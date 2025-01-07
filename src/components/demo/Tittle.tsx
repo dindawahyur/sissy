@@ -1,11 +1,4 @@
-import {
-  bismillah,
-  lintang,
-  rifqi,
-  blue_vintage,
-  bg_bunga,
-  bg_abu,
-} from "@/assets";
+import { bismillah, lintang, rifqi, bg_full } from "@/assets";
 import { motion } from "framer-motion";
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -21,22 +14,14 @@ export function Tittle() {
   return (
     <section
       id="title"
-      className="my-12 font-primary min-h-screen"
+      className="py-6 font-primary min-h-screen text-white"
       style={{
-        backgroundImage: `url(${bg_abu})`,
+        backgroundImage: `url(${bg_full})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div
-        className="flex justify-center mb-8 flex-col"
-        style={{
-          backgroundImage: `url(${blue_vintage})`,
-          backgroundRepeat: "repeat-y",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
-        }}
-      >
+      <div className="flex justify-center mb-8 flex-col">
         <section className="container mx-auto py-5 px-5 mx-5" id="skills">
           <div className="flex flex-col text-center items-center">
             <motion.img
@@ -101,7 +86,7 @@ export function Tittle() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              Lintang Pandu Kusuma, S.Pd
+              Lintang Pandu Kusuma
             </motion.h5>
             <motion.p
               className="text-sm"
@@ -110,7 +95,7 @@ export function Tittle() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              Putri bapak Wawan Rajiko & Ibu Endang Purwaningsih
+              Putri Bapak Wawan Rajiko & Ibu Endang Purwaningsih
             </motion.p>
 
             <motion.h1
@@ -164,7 +149,7 @@ export function Tittle() {
             </motion.p>
           </div>
         </section>
-        <div
+        {/* <div
           style={{
             margin: "0 -24px",
             paddingBottom: "35%",
@@ -175,7 +160,7 @@ export function Tittle() {
             width: `calc(100vw + 30px)`,
             height: "auto",
           }}
-        />
+        /> */}
       </div>
     </section>
   );

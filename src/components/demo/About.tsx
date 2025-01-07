@@ -63,8 +63,26 @@ export function About() {
                 2016
               </h3>
               <p style={{ fontWeight: "300" }}>
-                Pertemuan tak terduga di kantin sekolah menjadi awal kisah cinta
-                kita.
+                Berawal ketika secara tidak sengaja kami sering bertemu di
+                kantin sekolah. Menjadi awal kisah cinta kami.
+              </p>
+            </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              iconStyle={{ background: "#3a4664", color: "#fff" }}
+              icon={<FaHeart />}
+              contentStyle={{
+                padding: "0 5px",
+                background: "#3a4664",
+                color: "white",
+              }}
+              contentArrowStyle={{ borderRight: "7px solid #3a4664" }}
+            >
+              <h3 className="vertical-timeline-element-title font-rouge text-3xl text-white pt-2">
+                2019
+              </h3>
+              <p style={{ fontWeight: "300" }}>
+                Sesuatu hal memaksa kami untuk berpisah.
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
@@ -82,8 +100,8 @@ export function About() {
                 2020
               </h3>
               <p style={{ fontWeight: "300" }}>
-                Menjadi bab terpisah dalam kisah cinta kami, namun akhirnya kita
-                bertemu kembali.
+                2020 adalah tahun yang membahagian karena takdir mempertemukan
+                kami kembali.
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
@@ -98,11 +116,11 @@ export function About() {
               contentArrowStyle={{ borderRight: "7px solid #3a4664" }}
             >
               <h3 className="vertical-timeline-element-title font-rouge text-3xl text-white pt-2">
-                2022
+                2023
               </h3>
               <p style={{ fontWeight: "300" }}>
-                Takdir mempertemukan kembali, dan kami memutuskan untuk
-                bertunangan.
+                Kami dan juga keluarga besar bersepakat untuk melanjutkan
+                hubungan kami ke jenjang yang lebih serius
               </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
@@ -120,7 +138,7 @@ export function About() {
                 12 Februari 2025
               </h3>
               <p style={{ fontWeight: "300" }}>
-                Kami akan memulai babak baru kehidupan bersama.
+                InsyaAllah kami akan melangsungkan janji suci pernikahan
               </p>
             </VerticalTimelineElement>
           </VerticalTimeline>

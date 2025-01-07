@@ -21,6 +21,7 @@ import {
   a_tiga,
   a_empat,
   a_lima,
+  bg_abu,
 } from "@/assets";
 
 interface Photo {
@@ -88,7 +89,14 @@ export function PhotoGallery() {
   };
 
   return (
-    <section className="py-12 bg-gradient-to-b from-background to-muted rounded-xl">
+    <section
+      className="py-12 px-6 bg-gradient-to-b from-background to-muted rounded-xl"
+      style={{
+        backgroundImage: `url(${bg_abu})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       {/* content */}
       <div className="container mx-auto px-4">
         {/* title */}

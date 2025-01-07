@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { bg_full } from "@/assets";
 
 interface Comment {
   name: string;
@@ -115,7 +116,15 @@ export function CommentSection() {
   };
 
   return (
-    <section id="comments" className="py-12 max-w-6xl mx-auto px-4 relative">
+    <section
+      id="comments"
+      className="py-12 max-w-6xl mx-auto px-10 relative"
+      style={{
+        backgroundImage: `url(${bg_full})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       {toast && (
         <div
           className={`fixed bottom-4 left-4 p-4 z-30 rounded-md ${
@@ -131,7 +140,7 @@ export function CommentSection() {
       <div className="flex flex-col md:flex-row gap-6">
         <Card className="flex-1 md:order-2">
           <CardHeader>
-            <h3 className="text-sm ">Silahkan isi form di bawah ini</h3>
+            <h3 className="text-sm ">Silakan isi form di bawah ini</h3>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
