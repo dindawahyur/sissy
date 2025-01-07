@@ -39,7 +39,9 @@ export default function App() {
         {/* <VideoSection /> */}
       </div>
       <Tittle />
-      <EventDetails />
+      <div className="z-50 container mx-auto px-6 space-y-12 mt-10">
+        <EventDetails />
+      </div>
       <About />
       <div className="z-50 container mx-auto px-6 space-y-12 mt-10">
         <PhotoGallery />
