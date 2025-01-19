@@ -4,11 +4,14 @@ import { Volume2, VolumeX, Pause, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import audio from "../../assets/audio/audio1.mp3";
 
-export function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false); // Default: tidak autoplay
+interface MusicPlayerProps {
+  isPlaying: boolean;
+  setIsPlaying: (playing: boolean) => void;
+}
+
+export const MusicPlayer = ({ isPlaying, setIsPlaying }: MusicPlayerProps) => {
   const [isMuted, setIsMuted] = useState(false);
   const [showInfo, setShowInfo] = useState(true);
-  const [userInteracted, setUserInteracted] = useState(false); // Flag untuk interaksi pengguna
   const audioRef = useRef<HTMLAudioElement>(null);
 
   // Show song info for 5 seconds
@@ -19,28 +22,21 @@ export function MusicPlayer() {
 
   // Handle play/pause effect
   useEffect(() => {
-    if (audioRef.current && userInteracted) {
-      // Hanya putar setelah interaksi pengguna
+    if (audioRef.current) {
       if (isPlaying) {
-        audioRef.current.play().catch((error) => {
-          console.log("Playback failed:", error);
-        });
+        audioRef.current.play();
       } else {
         audioRef.current.pause();
       }
     }
-  }, [isPlaying, userInteracted]);
-
+  }, [isPlaying]);
   // Handle mute/unmute effect
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.muted = isMuted;
     }
   }, [isMuted]);
-  const handleFirstInteraction = () => {
-    setUserInteracted(true); // Tandai interaksi pertama pengguna
-    setIsPlaying(true); // Mulai putar musik
-  };
+
   const togglePlay = () => setIsPlaying(!isPlaying);
   const toggleMute = () => setIsMuted(!isMuted);
   return (
@@ -64,26 +60,15 @@ export function MusicPlayer() {
       )}
       {/* Controls */}
       <div className="flex space-x-2">
-        {/* Play Button for first interaction */}
-        {!userInteracted && (
-          <Button
-            onClick={handleFirstInteraction}
-            variant="outline"
-            size="icon"
-          >
-            <Play className="h-4 w-4" />
-          </Button>
-        )}
         {/* Play/Pause Button */}
-        {userInteracted && (
-          <Button onClick={togglePlay} variant="outline" size="icon">
-            {isPlaying ? (
-              <Pause className="h-4 w-4" />
-            ) : (
-              <Play className="h-4 w-4" />
-            )}
-          </Button>
-        )}
+        <Button onClick={togglePlay} variant="outline" size="icon">
+          {isPlaying ? (
+            <Pause className="h-4 w-4" />
+          ) : (
+            <Play className="h-4 w-4" />
+          )}
+        </Button>
+
         {/* Mute/Unmute Button */}
         <Button onClick={toggleMute} variant="outline" size="icon">
           {isMuted ? (
@@ -95,4 +80,4 @@ export function MusicPlayer() {
       </div>
     </div>
   );
-}
+};

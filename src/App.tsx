@@ -10,39 +10,39 @@ import { About } from "@/components/demo/About";
 import { Footer } from "@/components/demo/Footer";
 import { PhotoGallery } from "./components/demo/PhotoGallery";
 import "./App.css";
-// import { Loading } from "./components/demo/Loading";
 import { Tittle } from "./components/demo/Tittle";
 import Hello from "./components/demo/Hello";
+import Undangan from "./components/demo/Undangan";
+import { useState } from "react";
+
 export default function App() {
-  // const [isLoaded, setIsLoaded] = useState(false);
+  const [isOpenUndangan, setIsOpenUndangan] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  // useEffect(() => {
-  //   setTimeout(() => setIsLoaded(true), 2000);
-  // }, []);
-
-  // if (!isLoaded) {
-  //   return <Loading />;
-  // }
+  const handleOpenUndangan = () => {
+    setIsOpenUndangan(true);
+    setIsPlaying(true); // This should make the Pause icon appear initially
+  };
 
   return (
     <div className=" min-h-screen text-foreground">
-      {/* Content Layer */}
-      {/* <header>
-        <Navbar />
-      </header> */}
+      {isOpenUndangan ? (
+        <>
+          <Hello />
+          <CountdownTimer targetDate={new Date("2025-02-12T00:00:00")} />
+          <Tittle />
+          <EventDetails />
+          <About />
+          <PhotoGallery />
+          <CommentSection />
+          <BankAccounts />
 
-      <Hello />
-
-      <CountdownTimer targetDate={new Date("2025-02-12T00:00:00")} />
-      <Tittle />
-      <EventDetails />
-      <About />
-      <PhotoGallery />
-      <CommentSection />
-      <BankAccounts />
-
-      <Footer />
-      <MusicPlayer />
+          <Footer />
+          <MusicPlayer isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+        </>
+      ) : (
+        <Undangan setOpenUndangan={handleOpenUndangan} />
+      )}
     </div>
   );
 }

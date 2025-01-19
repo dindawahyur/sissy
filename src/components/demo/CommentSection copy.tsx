@@ -6,14 +6,12 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { bg_full } from "@/assets";
-import axios from "axios";
 
 interface Comment {
   name: string;
   comment: string;
   timestamp: string;
   isSessionComment: boolean;
-  rsvp: RSVP | null;
 }
 
 interface Toast {
@@ -21,24 +19,18 @@ interface Toast {
   type: "success" | "error";
 }
 
-type RSVP = "hadir" | "tidak_hadir";
+const SESSION_STORAGE_KEY = "current_session_comments";
+const LOCAL_STORAGE_KEY = "recent_comments";
 
 export function CommentSection() {
-  const [rsvp, setRsvp] = useState<RSVP | null>(null);
   const [allComments, setAllComments] = useState<Comment[]>([]);
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
   const [toast, setToast] = useState<Toast | null>(null);
 
-  console.log("allComment", allComments);
   useEffect(() => {
     loadComments();
   }, []);
-
-  const handleChangeRsvp = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedRsvp = event.target.value as RSVP;
-    setRsvp(selectedRsvp);
-  };
 
   useEffect(() => {
     if (toast) {
@@ -49,69 +41,68 @@ export function CommentSection() {
     }
   }, [toast]);
 
-  // Memuat komentar dari API
-  const loadComments = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.weddinglintangrifqi.com/messages",
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("response", response);
-      setAllComments(
-        response.data.sort(
-          (a: Comment, b: Comment) =>
-            new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-        )
-      );
-    } catch (error) {
-      setToast({
-        message: "Gagal memuat komentar.",
-        type: "error",
-      });
-    }
+  const loadComments = () => {
+    const storedSessionComments = JSON.parse(
+      sessionStorage.getItem(SESSION_STORAGE_KEY) || "[]"
+    );
+    const storedRecentComments = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_KEY) || "[]"
+    );
+
+    const sessionComments = storedSessionComments.map((c: Comment) => ({
+      ...c,
+      isSessionComment: true,
+    }));
+    const recentComments = storedRecentComments.map((c: Comment) => ({
+      ...c,
+      isSessionComment: false,
+    }));
+
+    const combinedComments = [...sessionComments, ...recentComments].sort(
+      (a, b) =>
+        new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+    );
+
+    setAllComments(combinedComments);
   };
 
-  // Menangani pengiriman form untuk menambahkan komentar baru
-  const handleSubmit = async (e: React.FormEvent) => {
+  const saveComments = (
+    sessionComments: Comment[],
+    recentComments: Comment[]
+  ) => {
+    sessionStorage.setItem(
+      SESSION_STORAGE_KEY,
+      JSON.stringify(sessionComments)
+    );
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recentComments));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name && comment) {
-      const newComment: Partial<Comment> = {
+      const newComment: Comment = {
         name,
         comment,
-        rsvp,
         timestamp: new Date().toISOString(),
+        isSessionComment: true,
       };
 
-      try {
-        const response = await axios.post(
-          "https://api.weddinglintangrifqi.com/messages",
-          newComment,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const savedComment = response.data;
+      const updatedSessionComments = [
+        newComment,
+        ...allComments.filter((c) => c.isSessionComment),
+      ];
+      const updatedRecentComments = [
+        newComment,
+        ...allComments.filter((c) => !c.isSessionComment),
+      ].slice(0, 5);
 
-        setAllComments([savedComment, ...allComments]);
-        setName("");
-        setComment("");
-        setRsvp("hadir");
-        setToast({
-          message: "Komentar Anda telah ditambahkan.",
-          type: "success",
-        });
-      } catch (error) {
-        setToast({
-          message: "Gagal menambahkan komentar.",
-          type: "error",
-        });
-      }
+      saveComments(updatedSessionComments, updatedRecentComments);
+      setAllComments([newComment, ...allComments]);
+
+      setName("");
+      setComment("");
+
+      setToast({ message: "Your comment has been added.", type: "success" });
     }
   };
 
@@ -143,13 +134,13 @@ export function CommentSection() {
           {toast.message}
         </div>
       )}
-      <h2 className="text-4xl font-bold text-center mb-6 font-rouge text-white">
+      <h2 className="text-4xl font-bold text-center mb-6 font-rouge text-primary">
         Tinggalkan Kami Doa
       </h2>
       <div className="flex flex-col md:flex-row gap-6">
         <Card className="flex-1 md:order-2">
           <CardHeader>
-            <h3 className="text-sm">Silakan isi form di bawah ini</h3>
+            <h3 className="text-sm ">Silakan isi form di bawah ini</h3>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -159,24 +150,13 @@ export function CommentSection() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                maxLength={30}
               />
               <Textarea
                 placeholder="Ucapan/Doa"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 required
-                maxLength={255}
               />
-              <select
-                value={rsvp ?? ""}
-                onChange={handleChangeRsvp}
-                className="w-full p-2 border rounded-md"
-              >
-                <option value="">Pilih Kehadiran</option>
-                <option value="hadir">Hadir</option>
-                <option value="tidak_hadir">Tidak Hadir</option>
-              </select>
               <Button type="submit" className="w-full">
                 Kirim
               </Button>
@@ -185,13 +165,16 @@ export function CommentSection() {
         </Card>
         <Card className="flex-1 md:order-1">
           <CardHeader>
-            <h3 className="text-xl font-semibold">Komentar</h3>
+            <h3 className="text-xl font-semibold">Comments</h3>
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-[400px] md:h-[200px]">
               <div className="space-y-4 pr-4">
                 {allComments.map((c, index) => (
-                  <Card key={index}>
+                  <Card
+                    key={index}
+                    className={c.isSessionComment ? "border-primary" : ""}
+                  >
                     <CardHeader>
                       <div className="flex items-center space-x-3">
                         <Avatar>
@@ -200,7 +183,8 @@ export function CommentSection() {
                         <div>
                           <h4 className="font-bold">{c.name}</h4>
                           <p className="text-sm text-muted-foreground">
-                            {new Date(c.timestamp).toLocaleString()} - {c.rsvp}
+                            {new Date(c.timestamp).toLocaleString()}
+                            {c.isSessionComment && " (Current Session)"}
                           </p>
                         </div>
                       </div>
