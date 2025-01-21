@@ -200,7 +200,16 @@ export function CommentSection() {
                         <div>
                           <h4 className="font-bold">{c.name}</h4>
                           <p className="text-sm text-muted-foreground">
-                            {new Date(c.timestamp).toLocaleString()} - {c.rsvp}
+                            {new Date(
+                              new Date(c.timestamp).getTime() +
+                                7 * 60 * 60 * 1000
+                            ).toLocaleTimeString("id-ID", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              hour12: false,
+                            })}
+                            -{" "}
+                            {c.rsvp === "tidak_hadir" ? "Tidak Hadir" : "Hadir"}
                           </p>
                         </div>
                       </div>

@@ -29,7 +29,7 @@ const Undangan = ({ setOpenUndangan }: UndanganProps) => {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const guestName = params.get("name") || "Tamu";
+    const guestName = params.get("to") || "Tamu";
     setName(decodeURIComponent(guestName));
   }, []);
 
@@ -48,13 +48,13 @@ const Undangan = ({ setOpenUndangan }: UndanganProps) => {
         animate="visible"
       >
         <motion.h1
-          className="text-xl font-bold text-center font-rouge text-white"
+          className="text-3xl font-bold text-center font-rouge text-white"
           variants={childVariants}
         >
           The Wedding of
         </motion.h1>
         <motion.h1
-          className="text-3xl font-bold text-center font-rouge text-white mb-10 pb-5"
+          className="text-5xl font-bold text-center font-rouge text-white mb-10 pb-5 mt-3"
           variants={childVariants}
         >
           Lintang & Rifqi

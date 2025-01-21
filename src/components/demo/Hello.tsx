@@ -19,7 +19,7 @@ const Hello = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVideoPlaying(false);
-    }, 18000);
+    }, 19000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -76,16 +76,16 @@ const Hello = () => {
             initial="hidden"
             animate="visible"
           >
-            <motion.h3 className="text-white" variants={childVariants}>
+            <motion.h2 className="text-white text-xl" variants={childVariants}>
               The Wedding of
-            </motion.h3>
+            </motion.h2>
             <motion.h1
-              className="text-6xl font-bold text-center font-rouge text-white my-10"
+              className="text-6xl font-bold text-center font-rouge text-white my-[70px]"
               variants={childVariants}
             >
               Lintang <br />&<br /> Rifqi
             </motion.h1>
-            <motion.h3 className="text-white" variants={childVariants}>
+            <motion.h3 className="text-white text-xl" variants={childVariants}>
               12 Februari 2025
             </motion.h3>
           </motion.div>
